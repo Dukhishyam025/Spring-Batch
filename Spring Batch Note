@@ -1,0 +1,84 @@
+=============
+Spring Batch (to process the large volume of data)
+=============
+=> Spring Batch is a framework within the "Spring ecosystem".
+
+=> It is designed for batch processing in Java applications.
+
+=> It provides reusable functions for processing large volumes of records.
+
+==========================
+Batch Processing Usecases
+==========================
+Spring batch is particularly useful for tasks like reading large amounts of data, processing it, and writing it to a destination (e.g a database or file).
+
+1) bulk sms
+2) bulk email
+3) sending salaries to emps(banking)
+4) sending bank account statement to account holder every month
+
+          SBI ==> 50cr ppl
+
+          1) read all account details
+          2) read each account tx history 
+          3) prepare account statement in pdf format
+          4) send account stmt to acc-holder email
+          5) sending post paid mobile bill every month
+          6) credit card bill statement generation 
+          7) sending reminder to customers regarding their insurance plan renewal.
+          8) Payment Reminders.
+
+==========================
+Spring Batch Architecture
+==========================
+
+1) Job launcher 
+2) Job
+3) Step
+4) Job Repository
+5) Item Reader
+6) Item Processor
+7) Item Writer
+
+Job launcher : It is used to start the job execution.
+
+Job: It is used to represents set of steps for batch processing.
+
+Step : It represents sequence of our batch execution (reader + processor + writer).
+
+Item Reader : It is used to read data from the source.
+
+Item Processor : It is used to process the data.
+
+Item Writer: It is used to write the data to destination.
+
+Job Repository : To maintain job execution history and steps related info
+
+Spring Batch Documentation - https://spring.io/guides/gs/batch-processing
+
+==================
+Spring Scheduling
+==================
+
+=> Spring Schedular is a feature provided by the Spring Framework that allows to schedule tasks to run at specific times or intervals.
+
+=> It is particularly useful for automating repetitive tasks, such as sending emails, generating reports, or performing database cleanup...
+
+
+@SpringBootApplication
+@EnableScheduling
+public class SpringBatchApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBatchApplication.class, args);
+	}
+	
+	@Scheduled(fixedRate = 5000)
+	public void demo()
+	{
+		System.out.println("Task Executed : " + new Date() );
+	}
+
+}
+
+
